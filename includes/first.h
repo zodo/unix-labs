@@ -1,7 +1,7 @@
 #ifndef __FIRST__
 #define __FIRST__
 
-#define MAX_SIGNALS_AMOUNT 20
+#define MAX_SIGNALS_AMOUNT 50
 #define MAX_SIGNAL_STRING_LENGTH 200
 #include <signal.h>
 

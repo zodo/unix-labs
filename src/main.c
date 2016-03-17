@@ -25,6 +25,11 @@ int main (int argc, char **argv)
             printf ("usage: --amount=N\n");
             exit(EXIT_FAILURE);
           }
+          if (args.amount > 49)
+          {
+            printf ("more than 50\n");
+            exit(EXIT_FAILURE);
+          }
            printf ("signals amount : %d\n", args.amount);
            RunInPosixMode(args.amount);
           break;
