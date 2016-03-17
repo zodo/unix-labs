@@ -36,7 +36,10 @@ int main (int argc, char **argv)
             exit(EXIT_FAILURE);
           }
            printf ("signal value : %d\npid : %i\n", args.signalVal, args.pidVal);
-           kill(args.pidVal, args.signalVal);
+           if(kill(args.pidVal, args.signalVal) < 0){
+              perror("kill problems");
+           }
+           
           break;
         case 'i':
           printf ("runnning pipe mode\n");
