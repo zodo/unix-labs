@@ -37,8 +37,9 @@ void RunInPosixMode(int amount) {
 		if (sigaction(SIGCHLD, &sigChld, NULL) == -1) {
 			perror("SIGCHLD registration error");
 		}		
-		while(1) sleep(1);	
+		
 	}
+	while(1) sleep(1);	
 }
 
 
