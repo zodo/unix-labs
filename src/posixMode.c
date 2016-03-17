@@ -15,8 +15,8 @@ void RunInPosixMode(int amount) {
 	struct sigaction sigCustom;
 	sigCustom.sa_flags = SA_SIGINFO;
 	sigCustom.sa_sigaction = &HandleCustomSignal;
-
-	for (int j = SIGRTMIN; j < SIGRTMAX; j++) {
+	int j;
+	for (j = SIGRTMIN; j < SIGRTMAX; j++) {
 		if(sigaction(j, &sigCustom, NULL) == -1){
 			perror("registration errror");
 		}
@@ -24,8 +24,9 @@ void RunInPosixMode(int amount) {
 
 	pid_t pid = fork();
 	if (pid == 0) {
-		srand(time(NULL));		
-		for (int i = 0; i < amount; ++i) {
+		srand(time(NULL));	
+		int i;	
+		for (i = 0; i < amount; ++i) {
 			union sigval value;
 			int r_signal = (rand() % (SIGRTMAX + 1 - SIGRTMIN)) + SIGRTMIN;
 			value.sival_int = rand();
@@ -44,7 +45,8 @@ void RunInPosixMode(int amount) {
 int count = 0;
 void HandleMySigchld(int signal, siginfo_t *siginfo, void *context) {
 	
-	for (int i = 0; i < count; ++i)
+	int i;
+	for (i = 0; i < count; ++i)
 	{
 		fprintf(stdout, "%s\n", savedStrings[i]);
 	}
