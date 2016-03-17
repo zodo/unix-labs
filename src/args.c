@@ -1,8 +1,8 @@
-#include "first.h"
 #include <getopt.h>
 #include <stdio.h>
 #include <stdlib.h>
 
+#include "first.h"
 
 Arguments GetArguments(int argc, char * const argv[]){
 	Arguments args = { .mode = '?', .amount = 0, .signalVal = 0, .pidVal = 0};

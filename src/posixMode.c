@@ -1,9 +1,9 @@
-#include "first.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <unistd.h>
 #include <signal.h>
 #include <time.h>
+#include "first.h"
 
 const char savedStrings[MAX_SIGNALS_AMOUNT][MAX_SIGNAL_STRING_LENGTH];
 
