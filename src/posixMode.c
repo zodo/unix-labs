@@ -46,6 +46,7 @@ void RunInPosixMode(int amount) {
 int count = 0;
 void HandleMySigchld(int signal, siginfo_t *siginfo, void *context) {
 	
+	fprintf(stdout, "sigchild handler\n");
 	int i;
 	for (i = 0; i < count; ++i)
 	{
