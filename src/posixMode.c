@@ -39,7 +39,7 @@ void RunInPosixMode(int amount) {
 		}		
 		
 	}
-	while(1) sleep(1);	
+	// while(1) sleep(1);	
 }
 
 
