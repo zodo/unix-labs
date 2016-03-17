@@ -30,7 +30,7 @@ void RunInPipeMode() {
 		close(fd[0]);
 		sleep(1);
 		char * somedata = "somedate";
-		int len = strlen(somedata)
+		int len = strlen(somedata);
 		printf("str %s len %d\n", somedata, len);
 		size_t stat = write(fd[1], somedata, len);
 		if (stat < 0)
