@@ -5,9 +5,6 @@
 #include <signal.h>
 #include <time.h>
 
-
-int recieved_signals_count = 0;
-
 const char savedStrings[MAX_SIGNALS_AMOUNT][MAX_SIGNAL_STRING_LENGTH];
 
 void RunInPosixMode(int amount) {
@@ -43,9 +40,11 @@ void RunInPosixMode(int amount) {
 	}
 }
 
+
+int count = 0;
 void HandleMySigchld(int signal, siginfo_t *siginfo, void *context) {
 	
-	for (int i = 0; i < recieved_signals_count; ++i)
+	for (int i = 0; i < count; ++i)
 	{
 		fprintf(stdout, "%s\n", savedStrings[i]);
 	}
@@ -53,7 +52,7 @@ void HandleMySigchld(int signal, siginfo_t *siginfo, void *context) {
 }
 
 void HandleCustomSignal(int signal, siginfo_t *siginfo, void *context) {
-	sprintf(&savedStrings[recieved_signals_count], "paren %i|%i|%i|%i|%i", 
-		recieved_signals_count, siginfo->si_pid, getpid(), signal, siginfo->si_value.sival_int);
-	recieved_signals_count++;
+	sprintf(&savedStrings[count], "paren %i|%i|%i|%i|%i", 
+		count, siginfo->si_pid, getpid(), signal, siginfo->si_value.sival_int);
+	count++;
 }

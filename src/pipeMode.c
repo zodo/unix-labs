@@ -35,12 +35,12 @@ void RunInPipeMode() {
 		if (wait(&status) > 0) {
 			exit( EXIT_SUCCESS );
 		} else {
-			perror("zombie?");
+			perror("fail");
 			exit( EXIT_FAILURE );
 		}
 	}
 
-	while(1){}
+	while(1) sleep(1);
 }
 
 void HandleSigpipe(int signal, siginfo_t *siginfo, void *context) {	
