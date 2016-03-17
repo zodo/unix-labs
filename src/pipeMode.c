@@ -33,11 +33,10 @@ void RunInPipeMode() {
 		int len = strlen(somedata);
 		printf("str %s len %d\n", somedata, len);
 		size_t stat = write(fd[1], somedata, len);
-		perrror("write");
-
+		
 		if (stat < 0)
 		{
-			perrror("write");
+			perror("write");
 		}
 		if (stat != len)
 		{
