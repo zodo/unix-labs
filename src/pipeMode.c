@@ -29,12 +29,12 @@ void RunInPipeMode() {
 	} else if(pid > 0) {
 		close(fd[0]);
 		sleep(1);
-		size_t stat = write(fd[1], "somedata", strlen("somedata"));
+		size_t stat = write(fd[1], "somedata", strlen("somedata") + 1);
 		if (stat < 0)
 		{
 			perrror("write");
 		}
-		if (stat != strlen("somedata"))
+		if (stat != strlen("somedata") + 1)
 		{
 			fprintf(stderr, "write error\n" );
 		}	
