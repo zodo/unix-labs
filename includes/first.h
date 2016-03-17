@@ -25,7 +25,6 @@ void HandleSigchld(int signal, siginfo_t *siginfo, void *context);
 void RunInPosixMode(int amount);
 void HandleCustomSignal(int signal, siginfo_t *siginfo, void *context);
 void HandleMySigchld(int signal, siginfo_t *siginfo, void *context);
-void RunInKillMode(pid_t k_pid, int signal_no);
 void RunInPipeMode();
 void HandleSigpipe(int signal, siginfo_t *siginfo, void *context);
 
