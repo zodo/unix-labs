@@ -37,6 +37,13 @@ void RunInPosixMode(int amount) {
 		if (sigaction(SIGCHLD, &sigChld, NULL) == -1) {
 			perror("SIGCHLD registration error");
 		}		
+		int status;
+		if (wait(&status) > 0) {
+			exit( EXIT_SUCCESS );
+		} else {
+			perror("Failed to handle child-zombie");
+			exit( EXIT_FAILURE );
+		}
 		
 	}
 	// while(1) sleep(1);	
