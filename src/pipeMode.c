@@ -33,6 +33,8 @@ void RunInPipeMode() {
 		int len = strlen(somedata);
 		printf("str %s len %d\n", somedata, len);
 		size_t stat = write(fd[1], somedata, len);
+		perrror("write");
+
 		if (stat < 0)
 		{
 			perrror("write");
@@ -41,7 +43,6 @@ void RunInPipeMode() {
 		{
 			fprintf(stderr, "write error\n" );
 		}	
-		printf("%d\n", stat);
 
 		int status;
 		if (wait(&status) > 0) {
