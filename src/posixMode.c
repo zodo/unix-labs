@@ -22,6 +22,10 @@ void RunInPosixMode(int amount) {
 		}
 	}
 
+	if (sigaction(SIGCHLD, &sigChld, NULL) == -1) {
+			perror("SIGCHLD registration error");
+		}	
+
 	pid_t pid = fork();
 	if (pid == 0) {
 		srand(time(NULL));	
@@ -34,9 +38,7 @@ void RunInPosixMode(int amount) {
 			fprintf(stderr, "child %i|%i|%i|%i|%i\n", i, getpid(), getppid(), r_signal, value.sival_int);
 		}
 	} else if(pid > 0) {
-		if (sigaction(SIGCHLD, &sigChld, NULL) == -1) {
-			perror("SIGCHLD registration error");
-		}		
+			
 		int status;
 		if (wait(&status) > 0) {
 			exit( EXIT_SUCCESS );
