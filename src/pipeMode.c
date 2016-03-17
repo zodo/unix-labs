@@ -34,9 +34,9 @@ void RunInPipeMode() {
 		printf("str %s len %d\n", somedata, len);
 		size_t stat = write(fd[1], somedata, len);
 		
+		perror("write");
 		if (stat < 0)
 		{
-			perror("write");
 		}
 		if (stat != len)
 		{
